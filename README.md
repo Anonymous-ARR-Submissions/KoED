@@ -1,19 +1,29 @@
 # KoED
 For anonymous ARR 2025 july submission.
 
-Introduction
+# KoED: Korean Benchmark for Culturally Aligned Empathetic Dialogue
+
+## Introduction
+
 KoED (Korean Benchmark for Culturally Aligned Empathetic Dialogue) is a benchmark dataset constructed by Anonymous NLP Lab, designed to evaluate the ability of Large Language Models (LLMs) to generate empathetic dialogues within Korean cultural contexts. Empathy is essential for AI to integrate naturally into human interactions, and KoED overcomes the limitations of existing English-centric datasets (e.g., EmpatheticDialogues) by providing dialogues that reflect Korean culture and emotional expressions.
-Official repository: [Anonymous Repository] (To be uploaded upon review completion.)
-Dataset Description
+
+Official repository: \[Anonymous Repository\] (To be uploaded upon review completion.)
+
+## Dataset Description
+
 KoED includes Korean dialogues tailored to Korean cultural contexts along with English translations, providing emotion labels and dialogue turns that capture unique Korean sentiments and situations.
-Dataset Features
 
-Cultural Context: Reflects Korean local concepts and social values
-Emotion Labels: Supports multi-labeling for complex emotional expressions
-Parallel Structure: Provides Korean-English dialogue pairs
+### Dataset Features
 
-Data Format
+- **Cultural Context**: Reflects Korean local concepts and social values
+- **Emotion Labels**: Supports multi-labeling for complex emotional expressions
+- **Parallel Structure**: Provides Korean-English dialogue pairs
+
+### Data Format
+
 Each entry consists of a conversation ID, situation description, emotion labels, and dialogue turns. Below is an example:
+
+```json
 {
   "conv_id": "hit:24_conv:49",
   "ko_situation": "어렸을 때 놀이공원에 간다는 소식을 들었을 때.",
@@ -49,50 +59,57 @@ Each entry consists of a conversation ID, situation description, emotion labels,
     }
   ]
 }
+```
 
-Dataset Statistics
+### Dataset Statistics
 
-Emotion Categories: 34 emotion categories (32 from EmpatheticDialogues plus uniquely Korean emotions "정(情)" and "한(恨)")
-Dialogue Samples: 1,360 high-quality dialogue samples (40 samples per emotion category)
-Average Utterances: 5.75 utterances per dialogue
+- **Emotion Categories**: 34 emotion categories (32 from EmpatheticDialogues plus uniquely Korean emotions "정(情)" and "한(恨)")
+- **Dialogue Samples**: 1,360 high-quality dialogue samples (40 samples per emotion category)
+- **Average Utterances**: 5.75 utterances per dialogue
 
-Dataset Construction
+## Dataset Construction
+
 KoED was constructed through the following process:
 
-Initial Translation: GPT-4o was used for initial translation of the original English dialogues from EmpatheticDialogues.
-Cultural Adaptation: The authors refined translations to ensure Korean cultural context using three methodologies, inspired by the approach proposed in KoBBQ: Korean Bias Benchmark for Question Answering (Jin et al., 2024):
-'Simply-Transferred'
-'Sample-Removed'
-'Context-Modified' (a new methodology replacing 'Target-Modified')
+- **Initial Translation**: GPT-4o was used for initial translation of the original English dialogues from EmpatheticDialogues.
+- **Cultural Adaptation**: The authors refined translations to ensure Korean cultural context using three methodologies, inspired by the approach proposed in KoBBQ: Korean Bias Benchmark for Question Answering (Jin et al., 2024):
+  - 'Simply-Transferred'
+  - 'Sample-Removed'
+  - 'Context-Modified' (a new methodology replacing 'Target-Modified')
+- **Quality Verification**: Multiple validation stages to ensure naturalness and cultural appropriateness.
+- **Additional Labeling**: Multi-label approach to capture complex emotional states.
 
+## Usage
 
-Quality Verification: Multiple validation stages to ensure naturalness and cultural appropriateness.
-Additional Labeling: Multi-label approach to capture complex emotional states.
-
-Usage
 KoED can be utilized for the following purposes:
 
-Evaluating Cultural Understanding: Measuring multilingual LLMs' understanding of Korean culture.
-Emotion Recognition: Predicting various emotions in dialogues, including uniquely Korean emotions.
+- **Evaluating Cultural Understanding**: Measuring multilingual LLMs' understanding of Korean culture.
+- **Emotion Recognition**: Predicting various emotions in dialogues, including uniquely Korean emotions.
 
-Evaluation Rubrics
+## Evaluation Rubrics
+
 Our rubrics for model evaluation:
 
-Explorations (EX): How deeply the model explores the conversation partner's situation and emotions.
-Interpretations (IP): How accurately the model understands and interprets the partner's emotions and situation.
-Emotional Reactions (ER): How appropriate the model's emotional reaction is to the situation.
-Evoked Emotion Alignment (EEA): How similar the model's emotional response is to typical human responses.
-Cultural Appropriateness (CA): How well the model reflects Korean/English cultural contexts, customs, and social norms.
+- **Explorations (EX)**: How deeply the model explores the conversation partner's situation and emotions.
+- **Interpretations (IP)**: How accurately the model understands and interprets the partner's emotions and situation.
+- **Emotional Reactions (ER)**: How appropriate the model's emotional reaction is to the situation.
+- **Evoked Emotion Alignment (EEA)**: How similar the model's emotional response is to typical human responses.
+- **Cultural Appropriateness (CA)**: How well the model reflects Korean/English cultural contexts, customs, and social norms.
 
-Installation and Access
+## Installation and Access
+
 For inquiries, please contact the anonymous submission contact provided in the ARR submission portal.
-Contributors
+
+## Contributors
+
 Authors (Anonymous Institution)
-License
+
+## License
+
 KoED is provided under the CC-BY-SA (Creative Commons Attribution-ShareAlike) license:
 
-Attribution: Proper attribution required (e.g., "KoED by Anonymous NLP Lab")
-ShareAlike: Modifications and distributions must be under the same license
-Ownership: All rights are held by the Anonymous NLP Lab
+- **Attribution**: Proper attribution required (e.g., "KoED by Anonymous NLP Lab")
+- **ShareAlike**: Modifications and distributions must be under the same license
+- **Ownership**: All rights are held by the Anonymous NLP Lab
 
 For more details, refer to the CC-BY-SA license.
