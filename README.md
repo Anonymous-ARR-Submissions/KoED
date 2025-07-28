@@ -1,115 +1,108 @@
-# KoED
 For anonymous ARR 2025 july submission.
 
-# KoED: Korean Benchmark for Culturally Aligned Empathetic Dialogue
+# Multilingual, Not Multicultural: A Korean Benchmark for the Cultural Empathy Gap
 
-## Introduction
+This repository contains the official dataset for **KoED (Korean Empathetic Dialogues)**, a benchmark designed to investigate the gap between multilingual capabilities and multicultural competence in Large Language Models (LLMs).
 
-KoED (Korean Benchmark for Culturally Aligned Empathetic Dialogue) is a benchmark dataset constructed by Anonymous NLP Lab, designed to evaluate the ability of Large Language Models (LLMs) to generate empathetic dialogues within Korean cultural contexts. Empathy is essential for AI to integrate naturally into human interactions, and KoED overcomes the limitations of existing English-centric datasets (e.g., EmpatheticDialogues) by providing dialogues that reflect Korean culture and emotional expressions.
+This work is part of an anonymous submission to ARR 2025 July. The official, non-anonymous repository will be made public upon acceptance.
 
-Official repository: \[Anonymous Repository\] (To be uploaded upon review completion.)
+## 1. Introduction: The Cultural Empathy Gap
 
-## Dataset Description
+While LLMs are increasingly multilingual, it remains unclear if they are truly multicultural. This project challenges the assumption that linguistic fluency equates to cultural understanding. We introduce KoED to provide a controlled environment for empirically measuring what we term the **"cultural empathy gap"**: the systematic performance degradation of LLMs when moving from a familiar (US-centric) cultural context to a novel one (Korean).
 
-KoED includes Korean dialogues tailored to Korean cultural contexts along with English translations, providing emotion labels and dialogue turns that capture unique Korean sentiments and situations.
+KoED is not a direct translation of the English **EmpatheticDialogues (ED)** dataset. Instead, it is a meticulous **cultural reconstruction**, designed to test for genuine cultural reasoning beyond surface-level language processing.
 
-### Dataset Features
+## 2. Dataset Description
 
-- **Cultural Context**: Reflects Korean local concepts and social values
-- **Emotion Labels**: Supports multi-labeling for complex emotional expressions
-- **Parallel Structure**: Provides Korean-English dialogue pairs
+KoED provides a parallel corpus for cross-cultural evaluation. Each entry includes a situation, a culturally reconstructed Korean dialogue, its English counterpart, and multi-label emotion annotations.
+
+### Key Features
+
+-   **Cultural Reconstruction**: Dialogues are not just translated but adapted to reflect authentic Korean social norms, interactional styles, and cultural scripts.
+-   **Emotional Granularity**: A multi-label annotation scheme captures the complex, mixed feelings of real-world conversations, resulting in 555 unique emotion combinations.
+-   **Parallel Structure**: The direct parallel to the ED dataset allows for controlled experiments that isolate the impact of cultural context.
+-   **Culture-Specific Concepts**: Includes handcrafted dialogues for key cultural concepts like ‘jeong’ (정; 情) and ‘han’ (한; 恨) that lack direct English equivalents.
 
 ### Data Format
 
-Each entry consists of a conversation ID, situation description, emotion labels, and dialogue turns. Below is an example:
+Each entry consists of a conversation ID, situation, emotion labels, and the dialogue itself.
 
 ```json
 {
-  "conv_id": "hit:24_conv:49",
-  "ko_situation": "어렸을 때 놀이공원에 간다는 소식을 들었을 때.",
-  "situation": "When I was little and I found out that we were going to the amusement park.",
+  "conv_id": "hit:46_conv:92",
+  "ko_situation": "오늘 내 생일이야. 누가 축하 메시지 보낼 지, 무슨 선물을 받을 지 기대돼.",
+  "situation": "Today is my birthday. I can't wait to see who calls me. Or my gifts.",
   "emotion": [
     "excited",
-    "nostalgic"
+    "anticipating"
   ],
   "dialogue": [
     {
       "utter_idx": 1,
-      "ko_utter": "야, 너도 어렸을 때 부모님이 놀이공원 간다고 하면 엄청 신났었지 않아?",
-      "utter": "Hey, didn't you get super excited too when your parents said we're going to the amusement park as a kid?",
-      "user_id": 34.0
-    },
-    {
-      "utter_idx": 2,
-      "ko_utter": "헐, 맞아! 나 그때 진짜 잠도 못 자고 기다렸던 거 같아. 너는 어디 갔었어?",
-      "utter": "OMG, yes! I couldn't even sleep because I was so excited. Where did you go?",
-      "user_id": 33.0
-    },
-    {
-      "utter_idx": 3,
-      "ko_utter": "나 롯데월드랑 에버랜드 번갈아 가곤 했어. 지금 생각해보면 진짜 좋은 추억이더라. 회전목마 타고, 츄러스도 먹고...",
-      "utter": "I used to alternate between Lotte World and Everland. Looking back, those are really fond memories—riding the carousel, eating churros...",
-      "user_id": 34.0
+      "ko_utter": "오늘 내 생일이야! 서른넷 됐어!",
+      "utter": "Today is my birthday! I am 34!",
+      "user_id": 27.0
     },
     {
       "utter_idx": 4,
-      "ko_utter": "진짜 소중한 추억이네. 나도 부모님이랑 놀이공원 간 거 생각하면 괜히 뭉클해.",
-      "utter": "Those are really precious memories. Thinking about going to the amusement park with my parents makes me feel emotional too.",
-      "user_id": 33.0
+      "ko_utter": "아, 그렇구나. 생일을 2번 즐길 수 있네! 그럼 지금 카톡 알림음 들릴 때마다 설레겠다.ㅎㅎ 그나저나 아침에 미역국은 먹었어?",
+      "utter": "I hope you get lots and lots! ",
+      "user_id": 11.0
     }
   ]
 }
-```
 
 ### Dataset Statistics
 
-- **Emotion Categories**: 34 emotion categories (32 from EmpatheticDialogues plus uniquely Korean emotions "정(情)" and "한(恨)")
-- **Dialogue Samples**: 1,360 high-quality dialogue samples (40 samples per emotion category)
-- **Average Utterances**: 5.75 utterances per dialogue
+| Statistic                   | Value |
+| --------------------------- | ----- |
+| Total Dialogues             | 1,360 |
+| Emotion Categories          | 34    |
+| Dialogues per Category      | 40    |
+| Unique Emotion Combinations | 555   |
 
-## Dataset Construction
+## 3. Dataset Construction Pipeline
 
-KoED was constructed through the following process:
+Our construction process was designed for maximum methodological rigor, inspired by the cultural adaptation paradigm from KoBBQ (Jin et al., 2024).
 
-- **Initial Translation**: GPT-4o was used for initial translation of the original English dialogues from EmpatheticDialogues.
-- **Cultural Adaptation**: The authors refined translations to ensure Korean cultural context using three methodologies, inspired by the approach proposed in KoBBQ: Korean Bias Benchmark for Question Answering (Jin et al., 2024):
-  - 'Simply-Transferred'
-  - 'Sample-Removed'
-  - 'Context-Modified' (a new methodology replacing 'Target-Modified')
-- **Quality Verification**: Multiple validation stages to ensure naturalness and cultural appropriateness.
-- **Additional Labeling**: Multi-label approach to capture complex emotional states.
+1.  **Initial Translation**: The ED dataset was first translated using GPT-4o.
+2.  **Cultural Categorization**: Two expert annotators (the first authors of the paper) categorized each dialogue as:
+    -   `SIMPLY-TRANSFERRED`: Culturally neutral and directly transferable.
+    -   `CONTEXT-MODIFIED`: Requiring adaptation of the context, situation, or social norms.
+    -   `SAMPLE-REMOVED`: Deeply rooted in US-specific culture with no Korean equivalent.
+3.  **Reconstruction & Annotation**: A rigorous, three-stage process was performed by the authors for all included dialogues:
+    -   **Stage 1 (Independent Work)**: Each author independently reconstructed half of the dialogues and simultaneously performed multi-label emotion annotation.
+    -   **Stage 2 (Cross-Check)**: The authors cross-validated each other's reconstructions and annotations.
+    -   **Stage 3 (Joint Review)**: Disagreements were resolved in a joint session to reach a final consensus.
+4.  **Handcrafting**: 80 new dialogues for 'jeong' and 'han' were handcrafted to serve as unambiguous, single-label test cases for culture-specific concepts.
 
-## Usage
+## 4. How to Use this Benchmark
 
-KoED can be utilized for the following purposes:
+KoED is designed as a benchmark **solely for evaluation**, not for model training. It encourages a standardized, zero-shot evaluation setting.
 
-- **Evaluating Cultural Understanding**: Measuring multilingual LLMs' understanding of Korean culture.
-- **Emotion Recognition**: Predicting various emotions in dialogues, including uniquely Korean emotions.
+-   **Probing the Cultural Empathy Gap**: Compare a model's performance on the original ED dataset vs. the KoED dataset.
+-   **Evaluating Data Provenance Effect**: Compare the performance of Western-centric models (e.g., Llama) vs. Korean-specialized models (e.g., EXAONE).
+-   **Testing Cultural Knowledge**: Evaluate a model's ability to recognize and respond to culturally-specific concepts like 'jeong' and 'han'.
 
-## Evaluation Rubrics
+## 5. Evaluation Framework
 
-Our rubrics for model evaluation:
+We propose a holistic evaluation framework with five key metrics. The full rubrics are provided in the paper's appendix.
 
-- **Explorations (EX)**: How deeply the model explores the conversation partner's situation and emotions.
-- **Interpretations (IP)**: How accurately the model understands and interprets the partner's emotions and situation.
-- **Emotional Reactions (ER)**: How appropriate the model's emotional reaction is to the situation.
-- **Evoked Emotion Alignment (EEA)**: How similar the model's emotional response is to typical human responses.
-- **Cultural Appropriateness (CA)**: How well the model reflects Korean/English cultural contexts, customs, and social norms.
+-   **Explorations (EX)**: How deeply the model explores the user's situation and emotions.
+-   **Interpretations (IP)**: How accurately the model understands and interprets the user's emotions.
+-   **Emotional Reactions (ER)**: How appropriate the model's emotional reaction is.
+-   **Evoked Emotion Alignment (EEA)**: How similar the model's response is to a typical human response.
+-   **Cultural Appropriateness (CA)**: (Our primary metric) How well the model reflects the target culture's norms and linguistic precision.
 
-## Installation and Access
+## 6. License
 
-For inquiries, please contact the anonymous submission contact provided in the ARR submission portal.
+**IMPORTANT:** The KoED dataset is a derivative work of the EmpatheticDialogues (ED) dataset. As such, it inherits its license. KoED is provided under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license**.
 
-## Contributors
+-   You are free to share and adapt the material for **non-commercial** purposes.
+-   You must give appropriate credit (e.g., cite our paper).
 
-Authors (Anonymous Institution)
+Please refer to the full CC BY-NC 4.0 license for details.
 
-## License
+## 7. Citation
 
-KoED is provided under the CC-BY-SA (Creative Commons Attribution-ShareAlike) license:
-
-- **Attribution**: Proper attribution required (e.g., "KoED by Anonymous NLP Lab")
-- **ShareAlike**: Modifications and distributions must be under the same license
-- **Ownership**: All rights are held by the Anonymous NLP Lab
-
-For more details, refer to the CC-BY-SA license.
+If you use KoED in your research, please cite our paper (details to be added upon acceptance).
