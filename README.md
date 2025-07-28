@@ -1,4 +1,4 @@
-For anonymous ARR 2025 july submission.
+For anonymous ARR 2025 July submission.
 
 # Multilingual, Not Multicultural: A Korean Benchmark for the Cultural Empathy Gap
 
