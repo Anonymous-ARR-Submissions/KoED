@@ -44,9 +44,33 @@ Each entry consists of a conversation ID, situation, emotion labels, and the dia
       "user_id": 27.0
     },
     {
+      "utter_idx": 2,
+      "ko_utter": "생일 축하해!!!! 오늘 뭐 할 거야?",
+      "utter": "Happy Birthday!!!! What are you going to do for it?",
+      "user_id": 11.0
+    },
+    {
+      "utter_idx": 3,
+      "ko_utter": "평일이라 오늘은 조용히 보내고, 주말에 친구들이랑 술자리 가질까 해. 지금은 카톡 축하 메시지만 기다리는 중.",
+      "utter": "Nothing today since its Thursday, hopefully I can bar hop this weekend. Waiting for gifts today.",
+      "user_id": 27.0
+    },
+    {
       "utter_idx": 4,
       "ko_utter": "아, 그렇구나. 생일을 2번 즐길 수 있네! 그럼 지금 카톡 알림음 들릴 때마다 설레겠다.ㅎㅎ 그나저나 아침에 미역국은 먹었어?",
-      "utter": "I hope you get lots and lots! ",
+      "utter": "I hope you get lots and lots!",
+      "user_id": 11.0
+    },
+    {
+      "utter_idx": 5,
+      "ko_utter": "아직인데, 오늘 이따 회사 구내식당에서 마침 미역국이 나오더라고.",
+      "utter": "me too. I love goodies.",
+      "user_id": 27.0
+    },
+    {
+      "utter_idx": 6,
+      "ko_utter": "회사에서 챙겨주는 것 같네! 기분 좋겠다. 다시 한 번 축하하고 생일 잘 보내~",
+      "utter": "That's great! Looks like your company is taking care of you. Happy birthday again!",
       "user_id": 11.0
     }
   ]
